@@ -38,7 +38,9 @@ body {
 
 .properties {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Ensures items will wrap */
+  justify-content: center; /* Center the cards */
+  gap: 15px; /* Space between the cards */
 }
 
 .card {
@@ -47,4 +49,44 @@ body {
   border-radius: 20px;
   padding: 10px;
   box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+  text-align: center; /* Optional: center content inside the card */
+  overflow: hidden; /* Prevent image overflow */
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%; /* Make image take full width of the card */
+  height: 100px; /* Limit height of the image */
+  object-fit: cover; /* Ensures the image is contained and scaled properly */
+  border-radius: 10px; /* Optional: rounds image corners */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .properties {
+    justify-content: space-around;
+  }
+
+  .card {
+    width: 45%; /* Adjust card width for smaller screens */
+  }
+
+  .card img {
+    height: 80px; /* Adjust image height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .properties {
+    justify-content: space-evenly; /* Even spacing for very small screens */
+  }
+
+  .card {
+    width: 100%; /* Take full width of the screen for mobile */
+  }
+
+  .card img {
+    height: 70px; /* Further adjust image height for very small screens */
+  }
 }
