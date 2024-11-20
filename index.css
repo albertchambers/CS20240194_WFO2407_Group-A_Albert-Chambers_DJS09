@@ -62,6 +62,16 @@ body {
   border-radius: 10px; /* Optional: rounds image corners */
 }
 
+.footer {
+  width: 100%;
+  background-color: lightcoral;
+  position: fixed; /* Change to fixed */
+  bottom: 0;
+  text-align: center;
+  padding: 30px;
+  color: white;
+}
+
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
   .properties {
