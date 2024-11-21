@@ -1,7 +1,7 @@
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
 import { Permissions, LoyaltyUser } from './enums';
-import { Price, Country } from './type'
 import { Review, Property } from './interface';
+import MainProperty from './Class';
 
 const footer = document.querySelector('.footer') as HTMLElement
 const reviewContainer = document.querySelector('.reviews') as HTMLElement
@@ -142,17 +142,6 @@ function addReviews(array: Review[]): void {
 }
 
 button.addEventListener('click', () => addReviews(reviews))
-
-class MainProperty {
-    src: string
-    title: string
-    reviews: Review[]
-    constructor(src, title, reviews) {
-        this.src = src
-        this.title = title
-        this.reviews = reviews
-    }
-}
 
 let yourMainProperty = new MainProperty(
     'images/italian-property.jpeg', 
