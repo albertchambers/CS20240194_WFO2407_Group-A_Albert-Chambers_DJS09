@@ -1,6 +1,7 @@
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
 import { Permissions, LoyaltyUser } from './enums';
 import { Price, Country } from './type'
+import { Review } from './interface';
 
 const footer = document.querySelector('.footer') as HTMLElement
 const reviewContainer = document.querySelector('.reviews') as HTMLElement
@@ -10,12 +11,7 @@ const button = document.querySelector('button') as HTMLElement
 
 let isLoggedIn: boolean
 
-const reviews : { 
-    name: string; 
-    stars: number; 
-    loyaltyUser: LoyaltyUser; 
-    date: string
-    }[] = [
+const reviews: Review[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -134,12 +130,7 @@ footer.innerHTML = (`${currentLocation[0]} ${currentLocation[1]} ${currentLocati
 
 let count = 0
 
-function addReviews(array: {
-    name: string;
-    stars: number;
-    loyaltyUser: LoyaltyUser;
-    date: string;
-}[] ) : void {
+function addReviews(array: Review[]): void {
     if (!count ) {
         count++
         const topTwo = getTopTwoReviews(array)
