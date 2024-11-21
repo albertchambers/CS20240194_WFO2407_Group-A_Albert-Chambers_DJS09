@@ -24,8 +24,23 @@ export function showDetails(authorityStatus: boolean | Permissions, element: HTM
    }
 }
 
-export function makeMultiple(value: number): string {
+function makeMultiple(value: number): string {
     if (value > 1 || value == 0 ) {
         return 's'
     } else return ''
+}
+
+export function getTopTwoReviews(reviews: {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;
+}[]) : {
+    name: string;
+    stars: number;
+    loyaltyUser: LoyaltyUser;
+    date: string;  
+}[]  {
+ const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
+ return sortedReviews.slice(0,2)
 }
