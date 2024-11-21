@@ -4,7 +4,7 @@ const returningUserDisplay = document.querySelector('#returning-user') as HTMLEl
 const userNameDisplay = document.querySelector('#user') as HTMLElement
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLElement
 
-export function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
+export function showReviewTotal(value: number, reviewer: string, isLoyalty: LoyaltyUser) {
     const iconDisplay = LoyaltyUser.GOLD_USER ? '⭐' : ''
     reviewTotalDisplay.innerHTML = 'review total ' + value.toString() + '| last reviewed by ' + reviewer + ' ' + iconDisplay
 }

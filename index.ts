@@ -102,21 +102,7 @@ const properties : {
     }
 ]
 
-function showReviewTotal(
-    count: number,
-    reviewer: string,
-    loyaltyStatus: LoyaltyUser
-): void {
-    console.log(
-        `${reviewer} has ${count} reviews. Loyalty status: ${LoyaltyUser[loyaltyStatus]}`
-    );
-}
-
-showReviewTotal(
-    reviews.length,
-    reviews[0]?.name || 'No name',
-    reviews[0]?.loyaltyUser // Pass LoyaltyUser directly
-);
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
