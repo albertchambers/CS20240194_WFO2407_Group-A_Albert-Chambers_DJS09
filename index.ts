@@ -1,7 +1,7 @@
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from './utils'
 import { Permissions, LoyaltyUser } from './enums';
 import { Price, Country } from './type'
-import { Review } from './interface';
+import { Review, Property } from './interface';
 
 const footer = document.querySelector('.footer') as HTMLElement
 const reviewContainer = document.querySelector('.reviews') as HTMLElement
@@ -48,19 +48,7 @@ const you: {
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
 }
 
-const properties : {
-    image: string;
-    title: string;
-    price: Price;
-    location: {
-        firstLine: string;
-        city: string;
-        code: number;
-        country: Country;
-    };
-    contact: [number, string];
-    isAvailable: boolean;
-}[] = [
+const properties: Property[] = [
     {
         image: 'images/colombia-property.jpeg',
         title: 'Colombian Shack',
@@ -99,6 +87,19 @@ const properties : {
         },
         contact: [ +1123495082908, 'andyluger@aol.com'],
         isAvailable: true
+    },
+    {
+        image: 'images/malia-property.jpeg',
+        title: 'Malia Hotel',
+        price: 45,
+        location: {
+            firstLine: 'Room 4',
+            city: 'Malia',
+            code: 45334,
+            country: 'Malaysia'
+        },
+        contact: [ +60349822083, 'lee34@gmail.com'],
+        isAvailable: false
     }
 ]
 
@@ -106,11 +107,7 @@ showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 
 populateUser(you.isReturning, you.firstName)
 
-let authorityStatus: any
-
 isLoggedIn = true
-
-
 
 console.log("Starting to populate properties...");
 
@@ -146,3 +143,28 @@ function addReviews(array: Review[]): void {
 
 button.addEventListener('click', () => addReviews(reviews))
 
+class MainProperty {
+    src: string
+    title: string
+    reviews: Review[]
+    constructor(src, title, reviews) {
+        this.src = src
+        this.title = title
+        this.reviews = reviews
+    }
+}
+
+let yourMainProperty = new MainProperty(
+    'images/italian-property.jpeg', 
+    'Italian House',
+    [{
+        name: 'Olive',
+        stars: 5,
+        loyaltyUser: LoyaltyUser.GOLD_USER,
+        date: '12-04-2021'
+    }] )
+
+const mainImageContainer = document.querySelector('.main-image')
+const image = document.createElement('img')
+image.setAttribute('src', yourMainProperty.src)
+mainImageContainer?.appendChild(image)

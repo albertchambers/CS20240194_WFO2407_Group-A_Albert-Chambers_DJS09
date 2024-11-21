@@ -72,6 +72,21 @@ body {
   color: white;
 }
 
+.reviews {
+  display: flex;
+  padding: 10px;
+}
+
+.review-card {
+  padding: 10px;
+}
+
+.break {
+  height: 1px;
+  width: 90%;
+  background-color: coral;
+}
+
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
   .properties {
